@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bañuelos &amp; Bañuelos · Asesoría en Investigación y Redacción de Tesis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#10243f;
+    --navy-deep:#0a1829;
+    --paper:#f7f3ec;
+    --paper-warm:#efe8da;
+    --copper:#b06a3a;
+    --copper-light:#c98a5e;
+    --ink:#1c2733;
+    --muted:#5a6675;
+    --line:rgba(16,36,63,.14);
+    --serif:'Fraunces',serif;
+    --body:'Newsreader',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    background:var(--paper);
+    color:var(--ink);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+
+  /* ---------- decorative grain ---------- */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,243,236,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:.02em;color:var(--navy)}
+  .logo span{color:var(--copper)}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;letter-spacing:.01em;transition:color .2s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{
+    background:var(--navy);color:var(--paper)!important;
+    padding:9px 20px;border-radius:2px;font-size:.9rem;
+  }
+  .nav-cta:hover{background:var(--copper)}
+  @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:var(--paper);
+    padding:96px 0 110px;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;top:-80px;width:520px;height:520px;
+    background:radial-gradient(circle,rgba(176,106,58,.35),transparent 65%);
+    border-radius:50%;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .eyebrow{
+    font-size:.82rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--copper-light);margin-bottom:26px;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(2.6rem,6vw,4.5rem);line-height:1.05;
+    letter-spacing:-.015em;max-width:14ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--copper-light)}
+  .hero p{
+    margin-top:28px;max-width:46ch;font-size:1.2rem;
+    color:rgba(247,243,236,.82);line-height:1.6;
+  }
+  .hero-actions{margin-top:42px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;border-radius:2px;text-decoration:none;
+    font-size:1rem;letter-spacing:.01em;transition:all .25s;cursor:pointer;
+  }
+  .btn-primary{background:var(--copper);color:var(--paper);font-weight:500}
+  .btn-primary:hover{background:var(--copper-light);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid rgba(247,243,236,.35);color:var(--paper)}
+  .btn-ghost:hover{border-color:var(--copper-light);color:var(--copper-light)}
+
+  .hero-stats{
+    display:flex;gap:48px;margin-top:62px;flex-wrap:wrap;
+    padding-top:40px;border-top:1px solid rgba(247,243,236,.16);
+  }
+  .stat .num{font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--copper-light);line-height:1}
+  .stat .lbl{font-size:.9rem;color:rgba(247,243,236,.7);margin-top:8px;letter-spacing:.02em}
+
+  /* ---------- section base ---------- */
+  section{position:relative;z-index:2}
+  .pad{padding:92px 0}
+  .sec-eyebrow{
+    font-size:.8rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--copper);margin-bottom:18px;
+  }
+  .sec-title{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(2rem,4vw,2.9rem);line-height:1.1;
+    color:var(--navy);letter-spacing:-.01em;max-width:18ch;
+  }
+
+  /* ---------- about ---------- */
+  .about{background:var(--paper-warm)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:72px;align-items:start}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:40px}}
+  .about-lead{font-size:1.32rem;line-height:1.5;color:var(--navy);font-family:var(--serif);font-weight:400}
+  .about-body p{margin-bottom:20px;color:var(--ink)}
+  .about-body p:last-child{margin-bottom:0}
+  .credentials{margin-top:36px;display:flex;flex-direction:column;gap:14px}
+  .cred{display:flex;gap:14px;align-items:baseline}
+  .cred .mark{color:var(--copper);font-family:var(--serif);font-weight:600;flex-shrink:0}
+  .cred span{color:var(--muted);font-size:1rem}
+  .cred strong{color:var(--ink);font-weight:500}
+
+  /* ---------- services ---------- */
+  .services{background:var(--paper)}
+  .svc-head{max-width:42ch;margin-bottom:56px}
+  .svc-head p{margin-top:18px;color:var(--muted);font-size:1.1rem}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  @media(max-width:820px){.svc-grid{grid-template-columns:1fr}}
+  .svc-card{
+    background:var(--paper-warm);border:1px solid var(--line);
+    padding:38px 32px;border-radius:3px;transition:all .3s;position:relative;overflow:hidden;
+  }
+  .svc-card::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+    background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .35s;
+  }
+  .svc-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(16,36,63,.4)}
+  .svc-card:hover::before{transform:scaleX(1)}
+  .svc-num{font-family:var(--serif);font-size:.9rem;color:var(--copper);letter-spacing:.1em}
+  .svc-card h3{font-family:var(--serif);font-weight:500;font-size:1.4rem;color:var(--navy);margin:14px 0 14px}
+  .svc-card p{color:var(--muted);font-size:1rem;margin-bottom:22px}
+  .svc-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .svc-list li{font-size:.95rem;color:var(--ink);padding-left:20px;position:relative}
+  .svc-list li::before{content:"—";position:absolute;left:0;color:var(--copper)}
+
+  /* ---------- process ---------- */
+  .process{background:var(--navy);color:var(--paper)}
+  .process .sec-title{color:var(--paper)}
+  .process .sec-eyebrow{color:var(--copper-light)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:54px}
+  @media(max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+  .step{border-top:1px solid rgba(247,243,236,.22);padding-top:22px}
+  .step .n{font-family:var(--serif);font-size:2rem;color:var(--copper-light)}
+  .step h4{font-family:var(--serif);font-weight:500;font-size:1.15rem;margin:10px 0 8px}
+  .step p{font-size:.95rem;color:rgba(247,243,236,.72)}
+
+  /* ---------- pricing ---------- */
+  .pricing{background:var(--paper-warm)}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:54px}
+  @media(max-width:820px){.price-grid{grid-template-columns:1fr}}
+  .price-card{
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:3px;padding:38px 32px;display:flex;flex-direction:column;
+  }
+  .price-card.feat{background:var(--navy);color:var(--paper);border-color:var(--navy);transform:scale(1.03)}
+  @media(max-width:820px){.price-card.feat{transform:none}}
+  .price-card .tier{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper)}
+  .price-card.feat .tier{color:var(--copper-light)}
+  .price-card h3{font-family:var(--serif);font-weight:500;font-size:1.5rem;color:var(--navy);margin:12px 0 6px}
+  .price-card.feat h3{color:var(--paper)}
+  .amount{font-family:var(--serif);font-size:2.3rem;font-weight:500;color:var(--navy);margin:18px 0 4px;line-height:1}
+  .price-card.feat .amount{color:var(--copper-light)}
+  .amount small{font-size:.95rem;color:var(--muted);font-family:var(--body)}
+  .price-card.feat .amount small{color:rgba(247,243,236,.7)}
+  .price-card > p{color:var(--muted);font-size:.98rem;margin:16px 0 22px}
+  .price-card.feat > p{color:rgba(247,243,236,.75)}
+  .price-feats{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:30px;flex-grow:1}
+  .price-feats li{font-size:.95rem;padding-left:22px;position:relative;color:var(--ink)}
+  .price-card.feat .price-feats li{color:rgba(247,243,236,.9)}
+  .price-feats li::before{content:"✓";position:absolute;left:0;color:var(--copper);font-weight:600}
+  .price-card.feat .price-feats li::before{color:var(--copper-light)}
+  .price-btn{
+    text-align:center;padding:13px;border-radius:2px;text-decoration:none;
+    font-size:.98rem;transition:all .25s;border:1px solid var(--navy);color:var(--navy);
+  }
+  .price-btn:hover{background:var(--navy);color:var(--paper)}
+  .price-card.feat .price-btn{background:var(--copper);border-color:var(--copper);color:var(--paper)}
+  .price-card.feat .price-btn:hover{background:var(--copper-light);border-color:var(--copper-light)}
+  .price-note{text-align:center;margin-top:34px;color:var(--muted);font-size:.95rem;font-style:italic}
+
+  /* ---------- combo ---------- */
+  .combo{
+    background:var(--navy);color:var(--paper);border-radius:4px;
+    padding:48px 48px;position:relative;overflow:hidden;
+    box-shadow:0 24px 60px -30px rgba(16,36,63,.6);
+  }
+  .combo::after{
+    content:"";position:absolute;right:-80px;bottom:-80px;width:340px;height:340px;
+    background:radial-gradient(circle,rgba(176,106,58,.3),transparent 65%);border-radius:50%;
+  }
+  @media(max-width:680px){.combo{padding:36px 28px}}
+  .combo-tag{
+    display:inline-block;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--navy);background:var(--copper-light);padding:6px 14px;border-radius:2px;
+    font-family:var(--body);font-weight:500;margin-bottom:26px;position:relative;z-index:2;
+  }
+  .combo-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;position:relative;z-index:2}
+  @media(max-width:680px){.combo-grid{grid-template-columns:1fr;gap:32px}}
+  .combo-title{font-family:var(--serif);font-weight:500;font-size:1.8rem;line-height:1.15;margin-bottom:16px}
+  .combo-desc{color:rgba(247,243,236,.82);font-size:1.05rem;margin-bottom:26px}
+  .combo-feats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:480px){.combo-feats{grid-template-columns:1fr}}
+  .combo-feats span{font-size:.92rem;color:rgba(247,243,236,.88);padding-left:20px;position:relative}
+  .combo-feats span::before{content:"✦";position:absolute;left:0;color:var(--copper-light)}
+  .editor-profile{
+    display:flex;gap:18px;align-items:flex-start;
+    background:rgba(247,243,236,.05);border:1px solid rgba(247,243,236,.14);
+    border-left:3px solid var(--copper);border-radius:3px;padding:20px 22px;margin-bottom:26px;
+  }
+  .ep-avatar{
+    flex-shrink:0;width:52px;height:52px;border-radius:50%;
+    background:var(--copper);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:600;font-size:1.2rem;letter-spacing:.02em;
+  }
+  .ep-name{font-family:var(--serif);font-weight:500;font-size:1.05rem;color:var(--copper-light);margin-bottom:5px}
+  .ep-bio{font-size:.92rem;color:rgba(247,243,236,.8);line-height:1.55;margin:0}
+  .ep-bio strong{color:var(--paper);font-weight:500}
+  .combo-price{background:rgba(247,243,236,.06);border:1px solid rgba(247,243,236,.16);border-radius:3px;padding:30px 28px;text-align:center}
+  .combo-special{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--copper-light);margin-bottom:20px}
+  .combo-amounts{text-align:left;margin-bottom:26px}
+  .ca-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;color:rgba(247,243,236,.78);font-size:.98rem}
+  .ca-row strong{font-family:var(--serif);font-weight:500;color:var(--paper);font-size:1.15rem}
+  .ca-row small{font-size:.78rem;color:rgba(247,243,236,.6);font-family:var(--body)}
+  .ca-divider{height:1px;background:rgba(247,243,236,.18);margin:8px 0}
+  .ca-row.total strong{color:var(--copper-light);font-size:1.3rem}
+  .ca-row.total small{color:var(--copper-light);font-size:.75rem}
+  .ca-row.total span{color:var(--paper);font-weight:500}
+  .combo-fineprint{font-size:.8rem;color:rgba(247,243,236,.6);line-height:1.5;margin:0 0 22px;text-align:left}
+  .combo-btn{
+    display:block;background:var(--copper);color:var(--paper);text-decoration:none;
+    padding:14px;border-radius:2px;font-size:1rem;transition:all .25s;
+  }
+  .combo-btn:hover{background:var(--copper-light);transform:translateY(-2px)}
+
+  /* ---------- cta / whatsapp ---------- */
+  .cta{background:var(--navy-deep);color:var(--paper);text-align:center;overflow:hidden;position:relative}
+  .cta::before{
+    content:"";position:absolute;left:50%;top:-100px;transform:translateX(-50%);
+    width:600px;height:600px;background:radial-gradient(circle,rgba(176,106,58,.25),transparent 60%);
+  }
+  .cta .wrap{position:relative;z-index:2}
+  .cta h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.08;max-width:18ch;margin:0 auto}
+  .cta h2 em{font-style:italic;color:var(--copper-light)}
+  .cta p{margin:24px auto 0;max-width:48ch;color:rgba(247,243,236,.8);font-size:1.15rem}
+  .wa-btn{
+    display:inline-flex;align-items:center;gap:12px;margin-top:40px;
+    background:#25d366;color:#06381b;font-weight:600;
+    padding:17px 36px;border-radius:3px;text-decoration:none;font-size:1.08rem;
+    transition:all .25s;box-shadow:0 12px 34px -14px rgba(37,211,102,.6);
+  }
+  .wa-btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -14px rgba(37,211,102,.7)}
+  .wa-btn svg{width:24px;height:24px}
+  .wa-sub{margin-top:18px;font-size:.92rem;color:rgba(247,243,236,.6);letter-spacing:.02em}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-deep);color:rgba(247,243,236,.6);padding:38px 0;border-top:1px solid rgba(247,243,236,.12)}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.9rem}
+  .foot .logo{font-size:1rem}
+  .disclaimer{max-width:60ch;font-size:.8rem;line-height:1.5;color:rgba(247,243,236,.4);margin-top:18px}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* floating wa */
+  .float-wa{
+    position:fixed;right:24px;bottom:24px;z-index:60;
+    width:58px;height:58px;border-radius:50%;background:#25d366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px -6px rgba(37,211,102,.6);transition:transform .25s;
+  }
+  .float-wa:hover{transform:scale(1.08)}
+  .float-wa svg{width:30px;height:30px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">B<span>&amp;</span>B</div>
+    <nav class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#precios">Inversión</a>
+      <a href="#contacto" class="nav-cta">Agendar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Bañuelos &amp; Bañuelos &middot; Asesoría académica</p>
+    <h1>Tu tesis, <em>acompañada</em> por una mente científica.</h1>
+    <p>Asesoría especializada en metodología de la investigación y redacción académica para residentes médicos y estudiantes de licenciatura. Tú coordinas tu proyecto; yo te acompaño en el trabajo pesado de investigar y escribir.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-primary">Escríbeme por WhatsApp</a>
+      <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">5+</div><div class="lbl">Tesis acompañadas</div></div>
+      <div class="stat"><div class="num">2 años</div><div class="lbl">En investigación clínica</div></div>
+      <div class="stat"><div class="num">ITESM</div><div class="lbl">Ingeniería Biomédica</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about pad" id="sobre-mi">
+  <div class="wrap about-grid reveal">
+    <div>
+      <p class="sec-eyebrow">Sobre mí</p>
+      <h2 class="sec-title">Ciencia, datos y redacción.</h2>
+    </div>
+    <div class="about-body">
+      <p class="about-lead">Soy Ximena Bañuelos Barraza, Ingeniera Biomédica por el Tecnológico de Monterrey, con experiencia real en investigación que pongo al servicio de tu trabajo de titulación.</p>
+      <p>Durante cerca de dos años trabajé en investigación dentro de una startup de salud digital, pasando de practicante a líder de proyecto, analizando datos biométricos y clínicos con herramientas como Python, SQL y modelos estadísticos. Fui finalista en una competencia internacional de la IEEE-EMBS por trabajo en inteligencia artificial explicable.</p>
+      <p>Esa trayectoria me dio algo que pocos asesores tienen: domino tanto la <strong>metodología de la investigación</strong> como el <strong>análisis de datos</strong> y la <strong>redacción científica formal</strong>. Sé cómo se construye un protocolo, cómo se defiende una metodología y cómo se escribe para que un comité lo apruebe.</p>
+      <div class="credentials">
+        <div class="cred"><span class="mark">01</span><span><strong>Metodología de la investigación</strong> — diseño de estudio, planteamiento del problema, hipótesis y variables.</span></div>
+        <div class="cred"><span class="mark">02</span><span><strong>Análisis estadístico</strong> — de datos clínicos y experimentales con software especializado.</span></div>
+        <div class="cred"><span class="mark">03</span><span><strong>Redacción académica</strong> — marco teórico, resultados y discusión con formato y citación correctos.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services pad" id="servicios">
+  <div class="wrap">
+    <div class="svc-head reveal">
+      <p class="sec-eyebrow">Servicios</p>
+      <h2 class="sec-title">Apoyo a la medida de tu etapa.</h2>
+      <p>Ya sea que necesites acompañamiento de principio a fin o resolver una sección específica que se te atoró, trabajamos juntos sobre tu tema y tus avances.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <div class="svc-num">/ 01</div>
+        <h3>Acompañamiento integral</h3>
+        <p>Te acompaño en todo el desarrollo de tu tesis, desde el protocolo hasta la defensa, mientras tú coordinas con tu asesor y facultad.</p>
+        <ul class="svc-list">
+          <li>Investigación y revisión de literatura</li>
+          <li>Redacción de capítulos</li>
+          <li>Análisis de resultados</li>
+          <li>Preparación para la defensa</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-num">/ 02</div>
+        <h3>Apoyo por sección</h3>
+        <p>¿Se te atoró un capítulo específico? Resolvemos justo lo que necesitas sin contratar el paquete completo.</p>
+        <ul class="svc-list">
+          <li>Marco teórico</li>
+          <li>Metodología</li>
+          <li>Análisis estadístico</li>
+          <li>Resultados y discusión</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-num">/ 03</div>
+        <h3>Revisión y corrección</h3>
+        <p>¿Ya tienes avances? Reviso y pulo tu documento para que llegue al comité impecable.</p>
+        <ul class="svc-list">
+          <li>Corrección ortotipográfica</li>
+          <li>Corrección de estilo</li>
+          <li>Claridad y coherencia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process pad" id="proceso">
+  <div class="wrap">
+    <p class="sec-eyebrow">Cómo trabajamos</p>
+    <h2 class="sec-title">Un proceso claro y colaborativo.</h2>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><h4>Tu tema</h4><p>Tú traes el tema aprobado por tu facultad y tus lineamientos. Definimos juntos el alcance.</p></div>
+      <div class="step reveal"><div class="n">02</div><h4>Plan de trabajo</h4><p>Acordamos etapas, tiempos y entregables. Tú coordinas las revisiones con tu asesor.</p></div>
+      <div class="step reveal"><div class="n">03</div><h4>Manos a la obra</h4><p>Investigamos y redactamos por capítulos, con revisiones constantes para que entiendas cada parte.</p></div>
+      <div class="step reveal"><div class="n">04</div><h4>Cierre y defensa</h4><p>Pulimos el documento final, ajustamos formato y te preparas para defenderlo con seguridad.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing pad" id="precios">
+  <div class="wrap">
+    <div class="reveal" style="max-width:42ch">
+      <p class="sec-eyebrow">Inversión</p>
+      <h2 class="sec-title">Precios aproximados, transparentes.</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <span class="tier">Revisión</span>
+        <h3>Corrección de documento</h3>
+        <div class="amount">$45<small> MXN / cuartilla</small></div>
+        <p>Para pulir un trabajo que ya tienes avanzado.</p>
+        <ul class="price-feats">
+          <li>Corrección ortotipográfica</li>
+          <li>Corrección de estilo</li>
+          <li>Claridad y coherencia</li>
+        </ul>
+        <a href="#contacto" class="price-btn">Cotizar</a>
+      </div>
+      <div class="price-card feat reveal">
+        <span class="tier">Más solicitado</span>
+        <h3>Acompañamiento integral</h3>
+        <div class="amount">desde $30,000<small> MXN</small></div>
+        <p>Tu tesis acompañada de principio a fin, con plan de pagos por etapa.</p>
+        <ul class="price-feats">
+          <li>Todas las etapas incluidas</li>
+          <li>Investigación + redacción</li>
+          <li>Análisis estadístico</li>
+          <li>Pagos divididos por capítulo</li>
+          <li>Preparación para defensa</li>
+        </ul>
+        <a href="#contacto" class="price-btn">Agendar consulta</a>
+      </div>
+      <div class="price-card reveal">
+        <span class="tier">Por sección</span>
+        <h3>Capítulo específico</h3>
+        <div class="amount">desde $3,000<small> MXN</small></div>
+        <p>Para resolver justo la parte que necesitas.</p>
+        <ul class="price-feats">
+          <li>Marco teórico, metodología…</li>
+          <li>Análisis de resultados</li>
+          <li>Revisiones incluidas</li>
+        </ul>
+        <a href="#contacto" class="price-btn">Cotizar</a>
+      </div>
+    </div>
+    <p class="price-note">Cada proyecto es único. La cotización final depende del área, extensión y plazos — escríbeme y lo platicamos sin compromiso.</p>
+  </div>
+
+  <div class="wrap" style="margin-top:72px">
+    <div class="combo reveal">
+      <div class="combo-tag">Servicio Plus</div>
+      <div class="combo-grid">
+        <div>
+          <p class="sec-eyebrow" style="color:var(--copper-light)">Dúo editorial</p>
+          <h3 class="combo-title">Tesis integral + corrección profesional</h3>
+          <p class="combo-desc">El paquete más completo: yo desarrollo tu tesis de principio a fin y mi padre, <strong>editor con más de 40 años de experiencia</strong>, la corrige y pule a nivel profesional. Dos miradas, un resultado impecable y listo para entregar.</p>
+
+          <div class="editor-profile">
+            <div class="ep-avatar">JSB</div>
+            <div class="ep-info">
+              <div class="ep-name">José Sigfrido Bañuelos</div>
+              <p class="ep-bio">Más de <strong>40 años</strong> de trayectoria como editor profesional y más de <strong>400 tesis aprobadas</strong> con su corrección. Ha colaborado con instituciones como <strong>UNAM, UAM, IPN y UdeO</strong>, entre otras.</p>
+            </div>
+          </div>
+
+          <div class="combo-feats">
+            <span>Desarrollo integral de la tesis</span>
+            <span>Corrección editorial profesional</span>
+            <span>Estilo, formato y citación</span>
+            <span>Documento listo para entregar</span>
+          </div>
+        </div>
+        <div class="combo-price">
+          <div class="combo-special">Precio especial combo</div>
+          <div class="combo-amounts">
+            <div class="ca-row"><span>Tesis integral</span><strong>$30,000</strong></div>
+            <div class="ca-row"><span>Corrección</span><strong>$35 <small>/ cuartilla</small></strong></div>
+            <div class="ca-divider"></div>
+            <div class="ca-row total"><span>Combo</span><strong>$30,000 <small>+ corrección</small></strong></div>
+          </div>
+          <p class="combo-fineprint">Corrección a $35/cuartilla (precio combo) en lugar de $45. Cotización final según la extensión de tu tesis.</p>
+          <a href="https://wa.me/526673085266?text=Hola%20Ximena!%20Me%20interesa%20el%20paquete%20Plus%20de%20tesis%20integral%20y%20correcci%C3%B3n%20para%20mi%20tesis." target="_blank" rel="noopener" class="combo-btn">Solicitar paquete Plus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta pad" id="contacto">
+  <div class="wrap">
+    <h2>¿List@ para avanzar con tu <em>tesis</em>?</h2>
+    <p>Cuéntame en qué etapa vas y qué necesitas. La primera conversación es sin costo y sin compromiso — vemos si encajamos y cómo puedo ayudarte.</p>
+    <a class="wa-btn" href="https://wa.me/526673085266?text=Hola%20Ximena!%20Vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20asesor%C3%ADa%20para%20mi%20tesis." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+      Escríbeme por WhatsApp
+    </a>
+    <p class="wa-sub">Respuesta en menos de 24 horas &middot; Mensaje directo</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="logo">Bañuelos &amp; Bañuelos<span style="color:var(--copper)">.</span></div>
+      <div>Asesoría en investigación y redacción &middot; CDMX</div>
+    </div>
+    <p class="disclaimer">Ofrezco servicios de asesoría, acompañamiento metodológico y apoyo en la redacción de trabajos de investigación. El estudiante es responsable de coordinar su proyecto con su institución y de cumplir con los lineamientos de integridad académica de su programa.</p>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/526673085266?text=Hola%20Ximena!%20Me%20interesa%20asesor%C3%ADa%20para%20mi%20tesis." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#06381b"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+</a>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(i%3*0.08)+'s';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
